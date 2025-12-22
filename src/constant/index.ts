@@ -1,4 +1,4 @@
-import { folderLogo, plasmaLogo, terminalLogo } from "@/assets";
+import { fireFoxLogo, folderLogo, plasmaLogo, settingLogo, terminalLogo } from "@/assets";
 import { IMG } from "@/type";
 
 export const images: IMG[] = [
@@ -14,4 +14,11 @@ export const images: IMG[] = [
     id: 3,
     href: folderLogo,
   },
+  {
+    id:4,
+    href:settingLogo
+  },{
+    id:5,
+    href:fireFoxLogo
+  }
 ];

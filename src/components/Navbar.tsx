@@ -26,12 +26,12 @@ const Navbar = () => {
             />
           ))}
         </div>
-        <div className="flex items-center gap-x-2 select-none">
+        <div className="flex items-center gap-x-5 md:gap-x-2 select-none ">
           <img src={wifiLogo} className="size-4" />
 
           <img src={battery} className="size-4" />
 
-          <time className="me-1">{dayjs().format("dddd MMM D h:mm A")}</time>
+          <time className="me-1 hidden md:flex">{dayjs().format("dddd MMM D h:mm A")}</time>
         </div>
       </nav>
     </main>
