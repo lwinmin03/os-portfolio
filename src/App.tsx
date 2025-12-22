@@ -8,7 +8,7 @@ import { useGSAP } from "@gsap/react";
 
 
 function App() {
-const GRID_SIZE = 108; 
+const GRID_SIZE = 96; 
 
 
   const containerRef=useRef<HTMLElement| null>(null);
@@ -16,21 +16,25 @@ const GRID_SIZE = 108;
   const cloneRef=useRef<HTMLDivElement | null>(null)
   gsap.registerPlugin(Draggable);
 
+  const snap = (value: number) => Math.round(value / GRID_SIZE) * GRID_SIZE;
 const tl =gsap.timeline();
 useGSAP(() => {
   if (!targerRef.current || !containerRef.current) return;
 
   Draggable.create(targerRef.current, {
     type: "x,y",
-    inertia: true,
+    inertia: false,
     bounds: containerRef.current,
 
-    snap: {
-      x: (value) => Math.round(value / GRID_SIZE) * GRID_SIZE,
-      y: (value) => Math.round(value / GRID_SIZE) * GRID_SIZE,
-    },
+    // liveSnap: {
+    //   x: (value) => Math.round(value / GRID_SIZE) * GRID_SIZE,
+    //   y: (value) => Math.round(value / GRID_SIZE) * GRID_SIZE,
+    // },
 
     onPress() {
+      
+
+      
       const target = this.target as HTMLDivElement;
 
       const clone = target.cloneNode(true) as HTMLDivElement;
@@ -48,7 +52,17 @@ useGSAP(() => {
     },
 
     onRelease() {
+
+
       const target = this.target as HTMLDivElement;
+
+       gsap.to(target, {
+        x: snap(this.x),
+        y: snap(this.y),
+        duration: 0.1,
+        ease: "none",
+      });
+
 
       if (cloneRef.current) {
         cloneRef.current.remove();
