@@ -1,4 +1,6 @@
 import Navbar from "@/components/Navbar";
+import DragFolder from "./components/DragFolder";
+import { folderLogo } from "./assets";
 
 function App() {
   return (
@@ -6,6 +8,8 @@ function App() {
       <div className="fixed bottom-0 left-0 w-full">
         <Navbar />
       </div>
+
+      <DragFolder img={folderLogo} placeholder="Personal" />
     </main>
   );
 }
