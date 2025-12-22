@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 
 
 function App() {
+const GRID_SIZE = 108; 
 
 
   const containerRef=useRef<HTMLElement| null>(null);
@@ -16,38 +17,49 @@ function App() {
   gsap.registerPlugin(Draggable);
 
 const tl =gsap.timeline();
-useGSAP(()=>{
-Draggable.create(targerRef.current,{
-  type:"x,y",
-  inertia:true,
+useGSAP(() => {
+  if (!targerRef.current || !containerRef.current) return;
 
+  Draggable.create(targerRef.current, {
+    type: "x,y",
+    inertia: true,
+    bounds: containerRef.current,
 
-  onPress(){
-    const target=this.target;
+    snap: {
+      x: (value) => Math.round(value / GRID_SIZE) * GRID_SIZE,
+      y: (value) => Math.round(value / GRID_SIZE) * GRID_SIZE,
+    },
 
-    const clone =target.cloneNode(true);
-    clone.style.position="absolute";
-    clone.style.pointerEvents = "none";
-    // clone.style.transform = target.style.transform;
-    target.style.opacity="0.6"
-    clone.style.left = target.offsetLeft + "px";
-     clone.style.top = target.offsetTop + "px";
-    containerRef.current.appendChild(clone);
-    cloneRef.current = clone;
-  },
+    onPress() {
+      const target = this.target as HTMLDivElement;
 
+      const clone = target.cloneNode(true) as HTMLDivElement;
+      clone.style.position = "absolute";
+      clone.style.pointerEvents = "none";
+      clone.style.opacity = "0.4";
 
-  onRelease(){
-      const target=this.target;
-    if(cloneRef.current){
+      clone.style.left = target.offsetLeft + "px";
+      clone.style.top = target.offsetTop + "px";
+
+      containerRef.current!.appendChild(clone);
+      cloneRef.current = clone;
+
+      target.style.opacity = "0.6";
+    },
+
+    onRelease() {
+      const target = this.target as HTMLDivElement;
+
+      if (cloneRef.current) {
         cloneRef.current.remove();
-      cloneRef.current=null
-        target.style.opacity="1"
-    }
-  }
-  
-})
-},{scope:containerRef.current})
+        cloneRef.current = null;
+      }
+
+      target.style.opacity = "1";
+    },
+  });
+}, { scope: containerRef });
+
 
 
 
