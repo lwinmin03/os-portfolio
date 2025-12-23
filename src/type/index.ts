@@ -13,3 +13,14 @@ export interface Drag {
     id:string
   
 }
+export type WindowType = "folder" | "terminal";
+
+export interface WindowStore {
+  zIndex: number;
+  folder: boolean;
+  terminal: boolean;
+
+  openWindow: (window: WindowType) => void;
+  closeWindow: (window: WindowType) => void;
+  bringToFront: () => void;
+}

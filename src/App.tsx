@@ -1,10 +1,11 @@
-import Navbar from "@/components/Navbar";
-import DragFolder from "./components/DragFolder";
+import Navbar from "@/components/common/Navbar";
+import DragFolder from "@/components/common/DragFolder";
 import { folderLogo } from "./assets";
 import gsap from "gsap";
 import { Draggable } from "gsap/all";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
+import PersonalWindow from "@/components/window/PersonalWindow";
 
 function App() {
   const GRID_SIZE = 96;
@@ -78,6 +79,9 @@ function App() {
         img={folderLogo}
         placeholder="Personal"
       />
+
+
+ <PersonalWindow />
     </main>
   );
 }
