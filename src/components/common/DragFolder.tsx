@@ -1,10 +1,11 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import { Drag } from "@/type";
 
 const DragFolder = forwardRef<HTMLDivElement, Drag>(
-  ({ img, placeholder,id }, ref) => {
+  ({ img, placeholder,id,onClick }, ref) => {
     return (
       <div
+      onClick={onClick}
       id={id}
         ref={ref}
         className="flex flex-col w-20 rounded-sm hover:bg-white/20 px-3 py-1 select-none"

@@ -1,8 +1,5 @@
 import {
   battery,
-  folderLogo,
-  plasmaLogo,
-  terminalLogo,
   wifiLogo,
 } from "@/assets";
 import { images } from "@/constant";

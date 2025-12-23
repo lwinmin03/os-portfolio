@@ -1,4 +1,4 @@
-import { RefObject } from "react"
+import { MouseEventHandler, RefObject } from "react"
 
 export interface IMG {
     id:number
@@ -11,9 +11,10 @@ export interface Drag {
     img:string,
     placeholder:string
     id:string
+    onClick:MouseEventHandler
   
 }
-export type WindowType = "folder" | "terminal";
+export type WindowType = "folder" | "terminal" | "personal";
 
 export interface WindowStore {
   zIndex: number;
@@ -23,4 +24,11 @@ export interface WindowStore {
   openWindow: (window: WindowType) => void;
   closeWindow: (window: WindowType) => void;
   bringToFront: () => void;
+}
+
+export interface SidebarItems{
+    id:number
+    icon:React.ElementType,
+    name:string
+
 }

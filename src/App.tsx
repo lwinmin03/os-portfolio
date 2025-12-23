@@ -6,12 +6,18 @@ import { Draggable } from "gsap/all";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import PersonalWindow from "@/components/window/PersonalWindow";
+import useWindowStore from "./store/windowStore";
 
 function App() {
+
+
+    const openWindow = useWindowStore((state) => state.openWindow);
+      const { terminal,folder} = useWindowStore();
   const GRID_SIZE = 96;
 
   const containerRef = useRef<HTMLElement | null>(null);
   const targerRef = useRef<HTMLDivElement | null>(null);
+  const personalRef=useRef<HTMLDivElement | null>(null);
   const cloneRef = useRef<HTMLDivElement | null>(null);
   gsap.registerPlugin(Draggable);
 
@@ -60,8 +66,23 @@ function App() {
           target.style.opacity = "1";
         },
       });
+
+
+
+
+  // Window drag (ONLY when folder is open)
+    if (folder && personalRef.current) {
+      Draggable.create(personalRef.current, {
+        type: "x,y",
+        bounds: containerRef.current,
+        inertia: false,
+        cursor: "default",
+      });
+    }
+
+
     },
-    { scope: containerRef }
+    { scope: containerRef,dependencies:[folder] }
   );
 
   return (
@@ -74,6 +95,7 @@ function App() {
       </div>
 
       <DragFolder
+      onClick={()=>openWindow("folder")}
         id="Personal"
         ref={targerRef}
         img={folderLogo}
@@ -81,7 +103,10 @@ function App() {
       />
 
 
- <PersonalWindow />
+
+{
+  folder &&  <PersonalWindow ref={personalRef}  />
+}
     </main>
   );
 }
