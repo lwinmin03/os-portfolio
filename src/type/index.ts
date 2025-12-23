@@ -3,6 +3,7 @@ import { RefObject } from "react"
 export interface IMG {
     id:number
     href:string
+    tooltip:string
 }
 
 

@@ -5,20 +5,25 @@ export const images: IMG[] = [
   {
     id: 1,
     href: plasmaLogo,
+    tooltip:"App Launcher"
   },
   {
     id: 2,
     href: terminalLogo,
+    tooltip:"Konsole"
   },
   {
     id: 3,
     href: folderLogo,
+    tooltip:"Folder"
   },
   {
     id:4,
-    href:settingLogo
+    href:settingLogo,
+    tooltip:"Settings"
   },{
     id:5,
-    href:fireFoxLogo
+    href:fireFoxLogo,
+    tooltip:"FireFox"
   }
 ];

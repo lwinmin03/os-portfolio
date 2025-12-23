@@ -7,6 +7,7 @@ import {
 } from "@/assets";
 import { images } from "@/constant";
 import dayjs from "dayjs";
+import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   return (
@@ -17,6 +18,13 @@ const Navbar = () => {
         <div className="flex gap-x-2">
           {images.map((item) => (
             <img
+             data-tooltip-id="nav-tooltip"
+  data-tooltip-content={item.tooltip}
+  data-tooltip-place="top-start"
+ data-tooltip-variant="light"
+
+ 
+
               key={item.id}
               alt="logo"
               className="size-10
@@ -25,8 +33,9 @@ const Navbar = () => {
               src={item.href}
             />
           ))}
+          <Tooltip id="nav-tooltip" style={{backgroundColor:"bg-red-300"}} className="react-tooltip bg-red-900"/>
         </div>
-        <div className="flex items-center gap-x-5 md:gap-x-2 select-none ">
+        <div className="flex items-center  gap-x-5 md:gap-x-2 select-none ">
           <img src={wifiLogo} className="size-4" />
 
           <img src={battery} className="size-4" />
