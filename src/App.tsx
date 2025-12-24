@@ -93,7 +93,8 @@ function App() {
       <div className="fixed bottom-0 left-0 w-full">
         <Navbar />
       </div>
-
+<div className="z-0">
+  
       <DragFolder
       onClick={()=>openWindow("folder")}
         id="Personal"
@@ -101,11 +102,12 @@ function App() {
         img={folderLogo}
         placeholder="Personal"
       />
+</div>
 
 
 
 {
-  folder &&  <PersonalWindow ref={personalRef}  />
+  folder &&  <PersonalWindow window="folder"   />
 }
     </main>
   );

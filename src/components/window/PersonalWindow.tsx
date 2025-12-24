@@ -1,8 +1,9 @@
 
+import { WindowType } from '@/type';
 import withWindow from '../hoc/WrappedWindow'
 import Sidebar from './Sidebar';
 
-const PersonalWindow = () => {
+const PersonalWindow = ({window}:{window:WindowType}) => {
   return (
     <div className='flex w-full'>
 
