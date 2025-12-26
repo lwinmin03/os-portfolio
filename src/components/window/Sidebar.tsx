@@ -1,11 +1,19 @@
 import { sideItems } from '@/constant'
-import { NavLink } from 'react-router-dom'
-const Sidebar = () => {
+import {  SidebarType } from '@/type'
+
+
+const Sidebar = ({current="About Me",onClick}:SidebarType) => {
+
+
+  
   return (
-  <nav className='flex flex-col w-36 '>
+  <nav className='flex flex-col w-36 h-full  '>
     {
         sideItems.map((item)=>(
-            <NavLink key={item.id}  className={"flex  hover:bg-gray-200 px-1.5 py-1 rounded-sm  select-none text-sm  items-center gap-x-3"} to={"1"}  >
+            <button  key={item.id} 
+            onClick={onClick}
+            
+            className={`flex transition-all ease-in-out  cursor-pointer px-1.5 py-1 m-2 rounded-sm  select-none text-sm  items-center gap-x-3 ${current=== item.name ? "bg-gray-900/10" :" hover:bg-gray-200"  } `}   >
 
                   <span className='size-6'>
                    < item.icon />
@@ -15,7 +23,7 @@ const Sidebar = () => {
                     {item.name}
                   </span>
 
-            </NavLink>
+            </button>
         ))
     }
   </nav>

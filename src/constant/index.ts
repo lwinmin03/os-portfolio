@@ -1,6 +1,6 @@
 import { fireFoxLogo, folderLogo, plasmaLogo, settingLogo, terminalLogo } from "@/assets";
 import { IMG, SidebarItems } from "@/type";
-import { Icon, LucideWorkflow, UserCogIcon } from "lucide-react";
+import { Icon, LucideWorkflow, UserCogIcon, Workflow } from "lucide-react";
 
 export const images: IMG[] = [
   {
@@ -13,21 +13,14 @@ export const images: IMG[] = [
     href: terminalLogo,
     tooltip:"Konsole"
   },
-  {
-    id: 3,
-    href: folderLogo,
-    tooltip:"Folder"
-  },
-  {
-    id:4,
-    href:settingLogo,
-    tooltip:"Settings"
-  },{
+ {
     id:5,
     href:fireFoxLogo,
     tooltip:"FireFox"
   }
 ];
+
+
 
 
 export const sideItems:SidebarItems[]=[
@@ -39,10 +32,13 @@ export const sideItems:SidebarItems[]=[
 
   {
     id:2,
-    icon:LucideWorkflow,
+    icon:Workflow,
     name:"Work"
   }
 ]
+
+
+
 
 
 

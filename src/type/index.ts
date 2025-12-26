@@ -32,3 +32,8 @@ export interface SidebarItems{
     name:string
 
 }
+
+export interface SidebarType{
+    current: "About Me" | string 
+    onClick:MouseEventHandler
+}

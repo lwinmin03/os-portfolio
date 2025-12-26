@@ -28,7 +28,6 @@ console.log(Index);
     const windowRef = React.useRef<HTMLDivElement>(null);
     const headerRef = React.useRef<HTMLDivElement>(null);
 
-    // ✅ GSAP animation + draggable in SAME CONTEXT
     useGSAP(() => {
       if (!windowRef.current) return;
 
@@ -68,7 +67,7 @@ console.log(Index);
     return (
       <section
         ref={windowRef}
-        className={`w-2xl bg-white rounded-sm p-1 absolute z-[${Index}] `}
+        className={`w-fit bg-white rounded-sm p-1 absolute z-[${Index}] `}
         onMouseDown={bringToFront}
       >
         {/* header (drag handle) */}
